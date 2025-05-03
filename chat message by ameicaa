@@ -233,4 +233,26 @@ Tab2:Button("Twelfth Message", function()
 if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("i\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\ ahh, and to clear up your doubts, yes, all of this is happening all over Roblox") end
 end)
 
+local Tab3 = library:Window("Exploit")
+
+Tab3:Label("Manipulate Players Chat", Color3.fromRGB(127, 143, 166))
+
+Tab3:Box("Random Player Chat", function(text, focuslost)
+    if focuslost then
+        if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
+            local players = game:GetService("Players"):GetPlayers()
+            if #players > 0 then
+                local randomPlayer = players[math.random(1, #players)].DisplayName
+                local message = "i\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\ " .. randomPlayer .. ": " .. text
+                game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message)
+            end
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Not Supported",
+                Text = "This game has the legacy ROBLOX chat version. The script can only be used in the new version of the ROBLOX chat. Sorry :("
+            })
+        end
+    end
+end)
+
 library:Keybind("Tab")
