@@ -256,10 +256,7 @@ Tab3:Box("Player Chat", function(text, focuslost)
             local message = "i\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r" .. selectedPlayer .. ": " .. text
             game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message)
         else
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Not Supported",
-                Text = "This game usa o chat legado. Use em um jogo com o novo sistema de chat."
-            })
+            
         end
     end
 end)
@@ -275,10 +272,7 @@ Tab3:Box("Random Player Chat", function(text, focuslost)
                 game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message)
             end
         else
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Not Supported",
-                Text = "This game has the legacy ROBLOX chat version. The script can only be used in the new version of the ROBLOX chat. Sorry :("
-            })
+            
         end
     end
 end)
