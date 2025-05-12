@@ -237,13 +237,41 @@ local Tab3 = library:Window("Exploit")
 
 Tab3:Label("Manipulate Players Chat", Color3.fromRGB(127, 143, 166))
 
+local selectedPlayer = nil
+
+-- Preencher a dropdown com nomes dos jogadores
+local players = game:GetService("Players"):GetPlayers()
+local playerNames = {}
+for i, v in ipairs(players) do
+    table.insert(playerNames, v.DisplayName)
+end
+
+Tab3:Dropdown("Select Player", playerNames, function(value)
+    selectedPlayer = value
+end)
+
+Tab3:Box("Player Chat", function(text, focuslost)
+    if focuslost and selectedPlayer then
+        if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
+            local message = "i\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r" .. selectedPlayer .. ": " .. text
+            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message)
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Not Supported",
+                Text = "This game usa o chat legado. Use em um jogo com o novo sistema de chat."
+            })
+        end
+    end
+end)
+
+
 Tab3:Box("Random Player Chat", function(text, focuslost)
     if focuslost then
         if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
             local players = game:GetService("Players"):GetPlayers()
             if #players > 0 then
                 local randomPlayer = players[math.random(1, #players)].DisplayName
-                local message = "i\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\ " .. randomPlayer .. ": " .. text
+                local message = "i\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r" .. randomPlayer .. ": " .. text
                 game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message)
             end
         else
